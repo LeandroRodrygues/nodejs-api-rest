@@ -32,10 +32,30 @@ class Atendimento {
                     res.status(400).json(erro);
                 } else {
                     res.status(201).json(resultado);
-                }
+                }                
             })            
         }
         
+    }
+    listar(res){
+        const sql = 'SELECT * FROM Atendimentos';
+        conexao.query(sql, (erro, resultado) => {
+            if (erro){
+                res.status(400).json(erro);
+            }else{
+                res.status(200).json(resultado);
+            }
+        })
+    }
+    buscaId(id, res){
+        const sql = 'SELECT * FROM Atendimentos WHERE id = ?';
+        conexao.query(sql, id, (erro, resultado) => {
+            if (erro){
+                res.status(400).json(erro);
+            }else{
+                res.status(200).json(resultado);
+            }
+        })
     }    
 }
 
