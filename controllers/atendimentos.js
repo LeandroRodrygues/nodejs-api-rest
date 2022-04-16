@@ -4,7 +4,7 @@ module.exports = app => {
     app.get('/atendimentos', (_req, res) => res.send('Você está realizando um GET'));
     app.post('/atendimentos', (req, res) => {
         const atendimento = req.body;
-        Atendimento.adiciona(atendimento);
-        res.send('Você está realizando um POST');
+        Atendimento.adiciona(atendimento, res);
+        
     });
 }
